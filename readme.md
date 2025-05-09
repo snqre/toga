@@ -16,7 +16,7 @@
     }
 
 
-    let Car {}
+    struct Car {}
 
     toga::blockset! {
         impl<T: Default> Car;
