@@ -26,7 +26,7 @@ impl Header {
         let r#type_generics: Option<&syn::Generics> = self.r#type_generics.as_ref();
         let r#impl_generics: Option<&syn::Generics> = self.r#impl_generics.as_ref();
         let r#where: Option<&syn::WhereClause> = self.r#where.as_ref();
-        let r#trait: &syn::Ident = &trait_block.r#trait;
+        let r#trait: &syn::Path = &trait_block.r#trait;
         let r#trait_generics: Option<&syn::Generics> = trait_block.r#trait_generics.as_ref();
         let block: &syn::Block = &trait_block.block;
         quote::quote! {

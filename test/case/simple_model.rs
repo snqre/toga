@@ -21,9 +21,9 @@ toga::blockset! {
         50
     }
 
-    Wizard {}
+    self::Wizard {}
 
-    Health<u8> {
+    self::Health<u8> {
         fn health(&self) -> u8 {
             100
         }
