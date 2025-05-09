@@ -1,6 +1,6 @@
 [package]
 name = "toga"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "Toga is a proc macro crate for writing clean ergonomic rust."
 
