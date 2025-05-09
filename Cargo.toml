@@ -1,0 +1,20 @@
+[package]
+name = "toga"
+version = "0.1.0"
+edition = "2024"
+description = "Toga is a proc macro crate for writing clean ergonomic rust."
+
+[lib]
+proc-macro = true
+
+[[test]]
+name = "test"
+path = "test/main.rs"
+
+[dev-dependencies]
+trybuild = { version = "1.0.0" }
+
+[dependencies]
+syn = { version = "2.0.0", features = ["full"] }
+quote = { version = "1.0.0" }
+proc-macro2 = { version = "1.0.0" }
