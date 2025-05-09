@@ -11,7 +11,9 @@ trait Wizard {
 struct Player<const A: usize, B>(B); 
 
 toga::blockset! { 
-    impl<const A: usize, B> Player<A, B>;
+    impl<const A: usize, B> Player<A, B>
+    where
+        B: Clone;
 
     pub fn hello_world(&self) {}
 
