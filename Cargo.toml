@@ -1,8 +1,9 @@
 [package]
 name = "toga"
-version = "0.1.2"
+version = "1.0.0"
 edition = "2024"
-description = "Toga is a proc macro crate for writing clean ergonomic rust."
+description = "Toga is a proc macro crate for cleaner and more ergonomic rust."
+license = "Apache-2.0"
 
 [lib]
 proc-macro = true
@@ -11,10 +12,18 @@ proc-macro = true
 name = "test"
 path = "test/main.rs"
 
-[dev-dependencies]
-trybuild = { version = "1.0.0" }
+[dev-dependencies.trybuild]
+version = "=1.0.0"
 
-[dependencies]
-syn = { version = "2.0.0", features = ["full"] }
-quote = { version = "1.0.0" }
-proc-macro2 = { version = "1.0.0" }
+[dependencies.syn]
+version = "=2.0.0"
+features = ["full"]
+
+[dependencies.quote]
+version = "=1.0.40"
+
+[dependencies.proc-macro2]
+version = "=1.0.80"
+
+[profile.release]
+opt-level = 3

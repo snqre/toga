@@ -1,4 +1,4 @@
-use crate::blockset::trait_block;
+use crate::impls::trait_block;
 
 pub struct Header {
     pub r#type: syn::Type,

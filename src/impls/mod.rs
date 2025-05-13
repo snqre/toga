@@ -1,13 +1,13 @@
 mod header;
 mod trait_block;
 
-pub struct Blockset {
+pub struct Impls {
     pub header: header::Header,
     pub blocks: Vec<trait_block::TraitBlock>,
     pub methods: Vec<syn::ItemFn>
 }
 
-impl Blockset {
+impl Impls {
 
     pub fn resolve(&self) -> proc_macro2::TokenStream {
         let blocks: _ = self.blocks.iter().map(|block| {
@@ -24,7 +24,7 @@ impl Blockset {
     }
 }
 
-impl syn::parse::Parse for Blockset {
+impl syn::parse::Parse for Impls {
 
     fn parse(stream: syn::parse::ParseStream) -> syn::Result<Self> {
         let header: header::Header = stream.parse()?;
@@ -39,7 +39,7 @@ impl syn::parse::Parse for Blockset {
                 blocks.push(block)
             }
         }
-        let blockset: Blockset = Blockset {
+        let blockset: Impls = Impls {
             header: header,
             blocks: blocks,
             methods: methods

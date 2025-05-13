@@ -10,7 +10,7 @@ trait Wizard {
 
 struct Player<const A: usize, B>(B); 
 
-toga::blockset! { 
+toga::impls! { 
     impl<const A: usize, B> Player<A, B>
     where
         B: Clone;
