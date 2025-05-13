@@ -1,6 +1,6 @@
 [package]
 name = "toga"
-version = "1.0.2"
+version = "1.0.3"
 edition = "2024"
 description = "Toga is a proc macro crate for cleaner and more ergonomic rust."
 license = "Apache-2.0"

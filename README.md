@@ -1,4 +1,4 @@
-# toga-blockset
+# toga
 
 Toga is a proc macro crate for cleaner and more ergonomic rust.
 
