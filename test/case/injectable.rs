@@ -1,4 +1,5 @@
 use toga::injectable;
+use toga::inject;
 use toga;
 
 #[injectable]
