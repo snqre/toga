@@ -8,7 +8,6 @@ pub struct Impls {
 }
 
 impl Impls {
-
     pub fn resolve(&self) -> proc_macro2::TokenStream {
         let blocks: _ = self.blocks.iter().map(|block| {
             let block: proc_macro2::TokenStream = self.header.resolve_trait_block(block);

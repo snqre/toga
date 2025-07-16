@@ -8,7 +8,6 @@ pub struct Header {
 }
 
 impl Header {
-
     pub fn resolve_inherent_block(&self, methods: &Vec<syn::ItemFn>) -> proc_macro2::TokenStream {
         let r#type: &syn::Type = &self.r#type;
         let r#type_generics: Option<&syn::Generics> = self.r#type_generics.as_ref();
@@ -37,7 +36,6 @@ impl Header {
 }
 
 impl syn::parse::Parse for Header {
-
     fn parse(stream: syn::parse::ParseStream) -> syn::Result<Self> {
         let _ = stream.parse::<syn::Token![impl]>()?;
         let r#impl_generics: Option<syn::Generics> = stream.parse().ok();
@@ -46,10 +44,10 @@ impl syn::parse::Parse for Header {
         let r#where: Option<syn::WhereClause> = stream.parse().ok();
         let _ = stream.parse::<syn::Token![;]>()?;
         let header: Self = Self {
-            r#type: r#type,
-            r#type_generics: r#type_generics,
-            r#impl_generics: r#impl_generics,
-            r#where: r#where
+            r#type,
+            r#type_generics,
+            r#impl_generics,
+            r#where
         };
         Ok(header)
     }

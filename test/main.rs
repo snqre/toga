@@ -1,6 +1,5 @@
 #[test]
 fn main() {
-    let t = trybuild::TestCases::new();
-    t.pass("test/case/simple_model.rs");
-    t.pass("test/case/injectable.rs");
+    let case = trybuild::TestCases::new();
+    case.pass("test/case/impls.rs");
 }

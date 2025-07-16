@@ -1,10 +1,8 @@
 trait Health<T> {
-
     fn health(&self) -> T;
 }
 
 trait Wizard {
-
     fn you_shall_not_pass(&self) {}
 }
 
@@ -22,7 +20,6 @@ toga::impls! {
     }
 
     self::Wizard {}
-
     self::Health<u8> {
         fn health(&self) -> u8 {
             100

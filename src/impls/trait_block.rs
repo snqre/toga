@@ -5,15 +5,14 @@ pub struct TraitBlock {
 }
 
 impl syn::parse::Parse for TraitBlock {
-
     fn parse(stream: syn::parse::ParseStream) -> syn::Result<Self> {
         let r#trait: syn::Path = stream.parse()?;
         let r#trait_generics: Option<syn::Generics> = stream.parse().ok();
         let block: syn::Block = stream.parse()?;
         let block: Self = Self { 
-            r#trait: r#trait, 
-            r#trait_generics: r#trait_generics, 
-            block: block 
+            r#trait, 
+            r#trait_generics, 
+            block
         };
         Ok(block)
     }
