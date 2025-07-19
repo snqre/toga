@@ -24,7 +24,6 @@ impl Impls {
 }
 
 impl syn::parse::Parse for Impls {
-
     fn parse(stream: syn::parse::ParseStream) -> syn::Result<Self> {
         let header: header::Header = stream.parse()?;
         let mut methods: Vec<syn::ItemFn> = vec![];
@@ -39,9 +38,9 @@ impl syn::parse::Parse for Impls {
             }
         }
         let blockset: Impls = Impls {
-            header: header,
-            blocks: blocks,
-            methods: methods
+            header,
+            blocks,
+            methods
         };
         Ok(blockset)
     }

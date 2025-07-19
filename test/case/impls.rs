@@ -8,24 +8,32 @@ trait Wizard {
 
 struct Player<const A: usize, B>(B); 
 
-toga::impls! { 
+toga::impls!(
     impl<const A: usize, B> Player<A, B>
     where
         B: Clone;
 
-    pub fn hello_world(&self) {}
+    #[inline]
+    pub const fn say_hello(&self, num: u8) {
+        
+    }
 
+    #[inline]
+    pub fn hello_world(&self) {}
     pub fn give_me_a_number(&self) -> u8 {
         50
     }
 
-    self::Wizard {}
-    self::Health<u8> {
+    Wizard {
+        #[inline]
+        fn you_shall_not_pass(&self) {}
+    }
+    Health<u8> {
         fn health(&self) -> u8 {
             100
         }
     }
-}
+);
 
 fn main() {
     let player: Player<5, _> = Player("Hello World");
@@ -33,4 +41,5 @@ fn main() {
     assert_eq!(player.give_me_a_number(), 50);
     player.you_shall_not_pass();
     player.hello_world();
+    player.say_hello(10);
 }

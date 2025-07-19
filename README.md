@@ -86,6 +86,7 @@ impls! {
         ...;
 
     // Inherent methods
+    #[attr]
     fn method1(...) { ... }
 
     // Trait blocks
