@@ -2,6 +2,10 @@
 
 Toga is a proc macro crate for cleaner and more ergonomic rust.
 
+## New
+* Support for `const` `async` `unsafe` inherent methods.
+* Support for attributes on inherent methods.
+
 ## Features
 
 * **Single-Block Syntax**: Define inherent methods and multiple trait implementations for a type within one macro invocation.
