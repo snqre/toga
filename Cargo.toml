@@ -1,5 +1,5 @@
 package.name = "toga"
-package.version = "1.0.5"
+package.version = "1.0.6"
 package.edition = "2021"
 package.description = "Toga is a proc macro crate for cleaner and more ergonomic rust."
 package.license = "Apache-2.0"
