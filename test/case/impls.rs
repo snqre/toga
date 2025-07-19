@@ -14,7 +14,7 @@ toga::impls!(
         B: Clone;
 
     #[inline]
-    pub const fn say_hello(&self, num: u8) {
+    pub fn say_hello(&self, num: u8) {
         
     }
 

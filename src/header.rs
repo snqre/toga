@@ -175,6 +175,8 @@ pub struct InherentFnItem {
     pub attrs: Vec<syn::Attribute>,
     pub vis: Option<syn::Visibility>,
     pub constant: Option<syn::Token![const]>,
+    pub flag_async: Option<syn::Token![async]>,
+    pub flag_unsafe: Option<syn::Token![unsafe]>,
     pub ident: syn::Ident,
     pub generics: Option<syn::Generics>,
     pub inputs: Vec<syn::FnArg>,
@@ -189,6 +191,8 @@ impl InherentFnItem {
         let attrs = &self.attrs;
         let vis = self.vis.as_ref();
         let constant = self.constant.as_ref();
+        let asy = self.flag_async.as_ref();
+        let uns = self.flag_unsafe.as_ref();
         let ident = &self.ident;
         let generics = self.generics.as_ref();
         let inputs = &self.inputs;
@@ -197,7 +201,7 @@ impl InherentFnItem {
         let block = &self.block;
         quote::quote!(
             #(#attrs)*
-            #vis #constant fn #ident #generics (#(#inputs),*) #output
+            #vis #constant #asy #uns fn #ident #generics (#(#inputs),*) #output
             #where_clause
             #block
         )
@@ -209,6 +213,8 @@ impl syn::parse::Parse for InherentFnItem {
         let attrs: Vec<syn::Attribute> = input.call(syn::Attribute::parse_outer)?;
         let vis: Option<syn::Visibility> = input.parse().ok();
         let constant: Option<_> = input.parse().ok();
+        let flag_async: Option<_> = input.parse().ok();
+        let flag_unsafe: Option<_> = input.parse().ok();
         let _ = input.parse::<syn::Token![fn]>()?;
         let ident: syn::Ident = input.parse()?;
         let generics: Option<syn::Generics> = input.parse().ok();
@@ -222,6 +228,8 @@ impl syn::parse::Parse for InherentFnItem {
             attrs,
             vis,
             constant,
+            flag_async,
+            flag_unsafe,
             ident,
             generics,
             inputs,
