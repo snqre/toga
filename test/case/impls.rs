@@ -24,11 +24,12 @@ toga::impls!(
         50
     }
 
-    Wizard {
+    impl Wizard {
         #[inline]
         fn you_shall_not_pass(&self) {}
     }
-    Health<u8> {
+    
+    impl Health<u8> {
         fn health(&self) -> u8 {
             100
         }

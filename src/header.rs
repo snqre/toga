@@ -128,6 +128,11 @@ impl syn::parse::Parse for Header {
 ///     ...
 /// }
 /// ```
+/// ```rs
+/// impl Trait<...> {
+///     ...
+/// }
+/// ```
 pub struct TraitImplBlockItem {
     pub tr: syn::Path,
     pub tr_generics: Option<syn::Generics>,
@@ -162,6 +167,7 @@ impl TraitImplBlockItem {
 
 impl syn::parse::Parse for TraitImplBlockItem {
     fn parse(input: syn::parse::ParseStream) -> syn::Result<Self> {
+        let _ = input.parse::<::syn::Token![impl]>().ok();
         let tr: syn::Path = input.parse()?;
         let tr_generics: Option<syn::Generics> = input.parse().ok();
         let tr_block: syn::Block = input.parse()?;
