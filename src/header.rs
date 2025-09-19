@@ -63,8 +63,17 @@ impl Header {
         let header_ty_generics: Option<_> = self.ty_generics.as_ref();
         let header_impl_generics: Option<_> = self.impl_generics.as_ref();
         let header_where_clause: Option<_> = self.where_clause.as_ref();
-        let inherent_fn_item_expansions: Vec<_> = inherent_fn_items.iter().map(|item| item.expansion()).collect();
-        let trait_impl_block_expansions: Vec<_> = trait_impl_blocks.iter().map(|item| item.expansion(self)).collect();
+        let inherent_fn_item_expansions: Vec<_> = inherent_fn_items.iter().map(|item| {
+            item.expansion()
+        }).collect();
+        let trait_impl_block_expansions: Vec<_> = trait_impl_blocks.iter().map(|item| {
+            item.expansion(self)
+        }).collect();
+        if inherent_fn_item_expansions.is_empty() {
+            return quote::quote!(
+                #(#trait_impl_block_expansions)*
+            )
+        }
         quote::quote!(
             impl #header_impl_generics #header_ty #header_ty_generics
             #header_where_clause {
